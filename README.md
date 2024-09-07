@@ -56,16 +56,15 @@ Install Telnet client: Ensure that you have a Telnet client installed on your sy
 
 
 
-    ```bash
 sudo apt-get install telnet
 
 
-      For Windows, you may need to enable Telnet through the Control Panel under "Turn Windows features on or off."
+For Windows, you may need to enable Telnet through the Control Panel under "Turn Windows features on or off."
 
 Open Telnet connection: Connect to a remote device or server via Telnet using the following command:
 
   
-  ```bash
+  
 
 telnet <server-ip> <port>
 Replace <server-ip> with the IP address of the server and <port> with the port (default is 23).
@@ -78,7 +77,7 @@ Start capturing: Click the blue shark fin icon to start capturing packets.
 Apply a capture filter (optional): To focus on Telnet traffic only, you can apply a capture filter for Telnet using:
 
 
- ```bash
+
 
 tcp port 23
 
@@ -86,7 +85,7 @@ Step 3: Establish the Telnet Connection
 Authenticate: After starting the Wireshark capture, go back to the Telnet session and log in to the remote device by providing a username and password.
 Execute commands: Run a few basic commands, such as:
 
- ```bash
+
 
 ls
 
@@ -94,7 +93,7 @@ Step 4: Stop the Capture and Analyze the Traffic
 Stop capturing: Once you've completed your Telnet session, go back to Wireshark and stop the capture by clicking the red square icon.
 Filter Telnet traffic: Apply a display filter to isolate Telnet traffic:
 
- ```bash
+ 
 
 tcp.port == 23
 
@@ -118,7 +117,7 @@ To capture SSH traffic, you first need to establish an SSH connection between tw
 Install SSH client: Ensure that an SSH client is installed on your system. On most Linux systems, OpenSSH is pre-installed. On Windows, you can use PuTTY or enable OpenSSH through PowerShell.
 Open an SSH connection: Connect to a remote server via SSH by running the following command (on Linux/macOS):
 
- ```bash
+ 
 
 ssh <username>@<server-ip>
 
@@ -130,7 +129,7 @@ Select the network interface: Choose the appropriate network interface (Ethernet
 Start capturing: Click the blue shark fin icon to start capturing packets.
 Apply a capture filter (optional): To focus only on SSH traffic, you can apply a capture filter:
 
- ```bash
+ 
 
 tcp port 22
 
@@ -143,7 +142,7 @@ ls
 Step 4: Stop the Capture and Analyze the Traffic
 Stop capturing: Once you’re done with your SSH session, go back to Wireshark and stop the capture by clicking the red square icon.
 Filter SSH traffic: Apply a display filter to isolate SSH traffic:
- ```bash
+ 
 
 tcp.port == 22
 
