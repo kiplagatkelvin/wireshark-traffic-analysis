@@ -54,11 +54,13 @@ To capture Telnet traffic, you first need to establish a Telnet connection betwe
 
 Install Telnet client: Ensure that you have a Telnet client installed on your system. On Linux, you can install it by running:
 
-```bash
+
+
+    ```bash
 sudo apt-get install telnet
 
 
- For Windows, you may need to enable Telnet through the Control Panel under "Turn Windows features on or off."
+      For Windows, you may need to enable Telnet through the Control Panel under "Turn Windows features on or off."
 
 Open Telnet connection: Connect to a remote device or server via Telnet using the following command:
 
