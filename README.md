@@ -4,7 +4,7 @@ Wireshark is a network protocol analyzer that lets you capture and interactively
 
 # Wireshark Traffic Analysis: Comparing Telnet and SSH
 
-Table of Content
+# Table of Content
 
 ## 1. Introduction to Telnet and SSH
 
@@ -22,41 +22,49 @@ Table of Content
 
 
 
-1. Introduction to Telnet and SSH
+### Introduction to Telnet and SSH
 Telnet and SSH (Secure Shell) are two protocols used for remote communication and network management. Both protocols allow users to access and control devices over a network, but they differ significantly in terms of security.
 
-Telnet
+# Telnet
+
 Telnet is one of the earliest remote communication protocols, dating back to the 1960s.
 It operates on TCP port 23 and enables users to establish a connection to remote devices.
 Plaintext transmission: Telnet transmits data, including login credentials and commands, in plaintext, making it vulnerable to eavesdropping and Man-in-the-Middle attacks.
 Due to its lack of encryption, Telnet is no longer considered secure and is rarely used in modern systems.
-SSH (Secure Shell)
+
+# SSH (Secure Shell)
+
 SSH was developed as a more secure alternative to Telnet in 1995.
 It operates on TCP port 22 and provides an encrypted channel for remote communication.
 Encryption: Unlike Telnet, SSH encrypts all data transmitted between the client and server, protecting against potential attackers intercepting sensitive information.
 SSH uses public-key cryptography and supports secure authentication mechanisms, making it a widely adopted standard for secure remote access and network management.
+
 Key Differences
+
 Security: SSH offers encryption, while Telnet does not.
 Usage: SSH is the preferred protocol for secure connections in modern systems, while Telnet is mostly obsolete due to its security risks.
 
 
-2. Capturing Telnet Traffic in Wireshark
+### Capturing Telnet Traffic in Wireshark
 In this section, we will demonstrate how to capture and analyze Telnet traffic using Wireshark. Telnet traffic is transmitted in plaintext, making it easy to observe sensitive information such as usernames and passwords directly in the packet capture.
 
 Step 1: Setting Up a Telnet Session
+
 To capture Telnet traffic, you first need to establish a Telnet connection between two devices.
 
 Install Telnet client: Ensure that you have a Telnet client installed on your system. On Linux, you can install it by running:
 
-bash
-Copy code
+```bash
 sudo apt-get install telnet
-For Windows, you may need to enable Telnet through the Control Panel under "Turn Windows features on or off."
+
+
+ For Windows, you may need to enable Telnet through the Control Panel under "Turn Windows features on or off."
 
 Open Telnet connection: Connect to a remote device or server via Telnet using the following command:
 
-bash
-Copy code
+  
+  ```bash
+
 telnet <server-ip> <port>
 Replace <server-ip> with the IP address of the server and <port> with the port (default is 23).
 
@@ -66,22 +74,26 @@ Open Wireshark: Launch Wireshark on the device where you want to capture the tra
 Select the network interface: Choose the appropriate network interface (e.g., Ethernet, Wi-Fi) that is being used for the Telnet connection.
 Start capturing: Click the blue shark fin icon to start capturing packets.
 Apply a capture filter (optional): To focus on Telnet traffic only, you can apply a capture filter for Telnet using:
-bash
-Copy code
+
+
+ ```bash
+
 tcp port 23
 
 Step 3: Establish the Telnet Connection
 Authenticate: After starting the Wireshark capture, go back to the Telnet session and log in to the remote device by providing a username and password.
 Execute commands: Run a few basic commands, such as:
-bash
-Copy code
+
+ ```bash
+
 ls
 
 Step 4: Stop the Capture and Analyze the Traffic
 Stop capturing: Once you've completed your Telnet session, go back to Wireshark and stop the capture by clicking the red square icon.
 Filter Telnet traffic: Apply a display filter to isolate Telnet traffic:
-bash
-Copy code
+
+ ```bash
+
 tcp.port == 23
 
 Examine packets: Scroll through the captured packets and focus on the ones containing Telnet protocol. You should be able to see the data transmitted in plaintext, including:
@@ -103,18 +115,23 @@ To capture SSH traffic, you first need to establish an SSH connection between tw
 
 Install SSH client: Ensure that an SSH client is installed on your system. On most Linux systems, OpenSSH is pre-installed. On Windows, you can use PuTTY or enable OpenSSH through PowerShell.
 Open an SSH connection: Connect to a remote server via SSH by running the following command (on Linux/macOS):
-bash
-Copy code
+
+ ```bash
+
 ssh <username>@<server-ip>
+
 Replace <username> with your SSH username and <server-ip> with the server’s IP address.
+
 Step 2: Starting Wireshark Capture
 Open Wireshark: Launch Wireshark on the device where you will capture the SSH traffic.
 Select the network interface: Choose the appropriate network interface (Ethernet, Wi-Fi) for the SSH connection.
 Start capturing: Click the blue shark fin icon to start capturing packets.
 Apply a capture filter (optional): To focus only on SSH traffic, you can apply a capture filter:
-bash
-Copy code
+
+ ```bash
+
 tcp port 22
+
 Step 3: Establish the SSH Connection
 Authenticate: After starting the Wireshark capture, go back to your terminal and log in to the remote server using your SSH credentials.
 Execute commands: Run a few commands, such as:
@@ -124,9 +141,10 @@ ls
 Step 4: Stop the Capture and Analyze the Traffic
 Stop capturing: Once you’re done with your SSH session, go back to Wireshark and stop the capture by clicking the red square icon.
 Filter SSH traffic: Apply a display filter to isolate SSH traffic:
-bash
-Copy code
+ ```bash
+
 tcp.port == 22
+
 Examine packets: Review the captured packets in Wireshark. Unlike Telnet, SSH traffic is encrypted, so you won't be able to see the plaintext commands or responses. The data is encapsulated within encrypted SSH packets.
 Key Observations
 Encrypted data: You’ll notice that SSH packets contain encrypted data that cannot be interpreted directly from the capture. The packet contents will show random data (ciphertext), unlike Telnet’s readable plaintext.
